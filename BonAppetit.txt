@@ -1,0 +1,45 @@
+#include <assert.h>
+#include <ctype.h>
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+/*
+ * Complete the 'bonAppetit' function below.
+ *
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY bill
+ *  2. INTEGER k
+ *  3. INTEGER b
+ */
+
+void bonAppetit(int count, int bill[], int k, int b) {
+    int i, total=0, real, pay;
+    for(i=0; i<count; i++) {
+        total = total+bill[i];
+    }
+    real = total - bill[k];
+    pay = real/2;
+    if(b<=pay) {
+        printf("Bon Appetit");
+    }
+    else if(b>pay) {
+        printf("%d", b-pay);
+    }
+}
+
+int main()
+{
+    int n, bill[100000], x, charge, i;
+    scanf("%d%d", &n, &x);
+    for(i=0; i<n; i++) {
+        scanf("%d", &bill[i]);
+    }
+    scanf("%d", &charge);
+    bonAppetit(n, bill, x, charge);
+    return 0;
+}
